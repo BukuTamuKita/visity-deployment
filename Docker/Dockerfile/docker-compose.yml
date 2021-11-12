@@ -2,27 +2,27 @@ version: '3.8'
 
 services:
     # Router
- #   router:
- #       build:
- #           context: .
- #           dockerfile: ./Dockerfile/Dockerfile-RO
- #       container_name: visity-backend-router
- #       restart: unless-stopped
-  #      tty: true
- #       volumes:
-  #          - certbot-etc:/etc/letsencrypt
- #           - certbot-var:/var/lib/letsencrypt
-#        ports:
- #           - "80:80"
- #           - "443:443"
- #       networks:
-#            - visity-backend-network
+    router:
+        build:
+            context: .
+            dockerfile: Dockerfile-RO
+        container_name: visity-backend-router
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - certbot-etc:/etc/letsencrypt
+            - certbot-var:/var/lib/letsencrypt
+        ports:
+            - "80:80"
+            - "443:443"
+        networks:
+            - visity-backend-network
     
     # Backend Service
     backend-app:
         build:
             context: .
-            dockerfile: ./Dockerfile/Dockerfile-BE
+            dockerfile: Dockerfile-BE
         container_name: visity-backend
         restart: unless-stopped
         tty: true
